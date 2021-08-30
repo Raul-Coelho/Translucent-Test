@@ -68,10 +68,10 @@ export const useStyles = makeStyles((theme: Theme) => createStyles({
     paddingRight: theme.spacing(2),
   },
   listItemText: {
-    fontSize: 14,
+    fontSize: 16,
   },
   listItem: {
-    marginLeft: 8,
+    alignContent: 'center',
     paddingTop: 4,
     paddingBottom: 4,
   },

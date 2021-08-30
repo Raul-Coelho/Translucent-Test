@@ -1,113 +1,100 @@
 import React from 'react';
 import clsx from 'clsx';
-import {
-  createStyles, makeStyles, useTheme, Theme,
-} from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import List from '@material-ui/core/List';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Typography from '@material-ui/core/Typography';
-import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
 import {
-  Box, Grid, Hidden, Switch,
+  Box, Grid, Switch,
 } from '@material-ui/core';
 import Settings from '@material-ui/icons/Settings';
 import AddBox from '@material-ui/icons/AddBox';
 import HomeIcon from '@material-ui/icons/Home';
 import { useStyles } from './Style';
+import GameCard from '../GameCard/GameCard';
 
 export default function SideMenu({ darkMode, setDarkMode }: { darkMode: boolean, setDarkMode: React.Dispatch<React.SetStateAction<boolean>> }): JSX.Element {
   const classes = useStyles();
-  const theme = useTheme();
   const [open, setOpen] = React.useState(false);
-  const videos = [
+  const games = [
     {
       id: 1,
-      title:
-        'FEED DO USUÁRIO | Criando uma Rede Social com React.js e .NET Core #29',
-      channel: 'Lucas Nhimi',
-      views: '11 mi de visualizações',
-      date: 'há 1 semana',
-      avatar: '/images/avatar.jpeg',
-      thumb: '/images/thumb1.png',
+      title: 'Metal Gear Solid 2',
+      year: '2001',
+      console: 'PS2',
+      completed: true,
+      dateOfCompletion: '07/08/2017',
+      personalNotes: 'I really liked this game. A masterpiece from Kojima productions.',
     },
     {
       id: 2,
-      title:
-        'COMO MELHORAR SEU CODIGO JAVASCRIPT (ESLINT + PRETTIER + EDITORCONFIG) | Dicas e Truques #02',
-      channel: 'Lucas Nhimi',
-      views: '957 mil visualizações',
-      date: 'há 1 semana',
-      avatar: '/images/avatar.jpeg',
-      thumb: '/images/thumb2.png',
+      title: 'Metal Gear Solid 2',
+      year: '2001',
+      console: 'PS2',
+      completed: true,
+      dateOfCompletion: '07/08/2017',
+      personalNotes: 'I really liked this game. A masterpiece from Kojima productions.',
     },
     {
       id: 3,
-      title:
-        'CONTEXT API NO EDITOR DE POST | Criando uma Rede Social com React.js e .NET Core #27',
-      channel: 'Lucas Nhimi',
-      views: '106 mil visualizações',
-      date: 'há 1 semana',
-      avatar: '/images/avatar.jpeg',
-      thumb: '/images/thumb3.png',
+      title: 'Metal Gear Solid 2',
+      year: '2001',
+      console: 'PS2',
+      completed: true,
+      dateOfCompletion: '07/08/2017',
+      personalNotes: 'I really liked this game. A masterpiece from Kojima productions.',
     },
     {
       id: 4,
-      title:
-        'CONTEXT API NO EDITOR DE POST | Criando uma Rede Social com React.js e .NET Core #27',
-      channel: 'Lucas Nhimi',
-      views: '5,6 mi de visualizações',
-      date: 'há 1 semana',
-      avatar: '/images/avatar.jpeg',
-      thumb: '/images/thumb4.png',
+      title: 'Metal Gear Solid 2',
+      year: '2001',
+      console: 'PS2',
+      completed: true,
+      dateOfCompletion: '07/08/2017',
+      personalNotes: 'I really liked this game. A masterpiece from Kojima productions.',
     },
     {
       id: 5,
-      title:
-        'EDITOR DE POST COM MARKDOWN 2 | Criando uma Rede Social com React.js e .NET Core #26',
-      channel: 'Lucas Nhimi',
-      views: '2,2 mi de visualizações',
-      date: 'há 1 semana',
-      avatar: '/images/avatar.jpeg',
-      thumb: '/images/thumb5.png',
+      title: 'Metal Gear Solid 2',
+      year: '2001',
+      console: 'PS2',
+      completed: true,
+      dateOfCompletion: '07/08/2017',
+      personalNotes: 'I really liked this game. A masterpiece from Kojima productions.',
     },
     {
       id: 6,
-      title: 'COMO MIGRAR PARA REACT HOOKS | Dicas e Truques #01',
-      channel: 'Lucas Nhimi',
-      views: '233 mil visualizações',
-      date: 'há 1 semana',
-      avatar: '/images/avatar.jpeg',
-      thumb: '/images/thumb6.png',
+      title: 'Metal Gear Solid 2',
+      year: '2001',
+      console: 'PS2',
+      completed: true,
+      dateOfCompletion: '07/08/2017',
+      personalNotes: 'I really liked this game. A masterpiece from Kojima productions.',
     },
     {
       id: 7,
-      title:
-        'PRÉ-REQUISITOS | Criando uma Rede Social com React.js e .NET Core #01',
-      channel: 'Lucas Nhimi',
-      views: '118 mil visualizações',
-      date: 'há 1 semana',
-      avatar: '/images/avatar.jpeg',
-      thumb: '/images/thumb7.png',
+      title: 'Metal Gear Solid 2',
+      year: '2001',
+      console: 'PS2',
+      completed: true,
+      dateOfCompletion: '07/08/2017',
+      personalNotes: 'I really liked this game. A masterpiece from Kojima productions.',
     },
     {
       id: 8,
-      title:
-        'GIT E GITHUB | Criando uma Rede Social com React.js e .NET Core #04',
-      channel: 'Lucas Nhimi',
-      views: '1,9 mi de visualizações',
-      date: 'há 1 semana',
-      avatar: '/images/avatar.jpeg',
-      thumb: '/images/thumb8.png',
+      title: 'Metal Gear Solid 2',
+      year: '2001',
+      console: 'PS2',
+      completed: true,
+      dateOfCompletion: '07/08/2017',
+      personalNotes: 'I really liked this game. A masterpiece from Kojima productions.',
     },
   ];
 
@@ -205,36 +192,10 @@ export default function SideMenu({ darkMode, setDarkMode }: { darkMode: boolean,
       </Drawer>
       <Box p={4}>
         <Toolbar />
-        <Grid container spacing={4}>
-          {videos.map((item, index) => (
+        <Grid container spacing={9}>
+          {games.map((item, index) => (
             <Grid item lg={3} md={4} sm={6} xs={12}>
-              <Box>
-                <img
-                  style={{ width: '100%' }}
-                  alt={item.title}
-                  src={item.thumb}
-                />
-                <Box>
-                  <Typography
-                    style={{ fontWeight: 600 }}
-                    gutterBottom
-                    variant="body1"
-                    color="textPrimary"
-                  >
-                    {item.title}
-                  </Typography>
-                  <Typography
-                    display="block"
-                    variant="body2"
-                    color="textSecondary"
-                  >
-                    {item.channel}
-                  </Typography>
-                  <Typography variant="body2" color="textSecondary">
-                    {`${item.views} • ${item.date}`}
-                  </Typography>
-                </Box>
-              </Box>
+              <GameCard game={item} />
             </Grid>
           ))}
         </Grid>
