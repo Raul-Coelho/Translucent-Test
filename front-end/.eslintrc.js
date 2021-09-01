@@ -34,6 +34,7 @@ module.exports = {
     '@typescript-eslint/explicit-module-boundary-types': 'off',
     'react/jsx-no-bind': 'off',
     'max-len': 'off',
+    'react/jsx-props-no-spreading': 'off',
     'no-use-before-define': 'off',
     'import/extensions': [
       'error',
