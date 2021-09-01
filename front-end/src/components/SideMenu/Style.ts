@@ -75,4 +75,10 @@ export const useStyles = makeStyles((theme: Theme) => createStyles({
     paddingTop: 4,
     paddingBottom: 4,
   },
+  fullWith: {
+    alignItems: 'center',
+    width: '97%',
+    backgroundColor: '#342E37',
+    color: '#fff',
+  },
 }));

@@ -1,4 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
+import {
+  BrowserRouter as Router, Link,
+} from 'react-router-dom';
 import clsx from 'clsx';
 import Drawer from '@material-ui/core/Drawer';
 import AppBar from '@material-ui/core/AppBar';
@@ -19,14 +22,16 @@ import AddBox from '@material-ui/icons/AddBox';
 import HomeIcon from '@material-ui/icons/Home';
 import { useStyles } from './Style';
 import GameCard from '../GameCard/GameCard';
+import { Game } from '../../interfaces/GameInterface';
+import Routes from '../../router/Routes';
 
 export default function SideMenu({ darkMode, setDarkMode }: { darkMode: boolean, setDarkMode: React.Dispatch<React.SetStateAction<boolean>> }): JSX.Element {
   const classes = useStyles();
-  const [open, setOpen] = React.useState(false);
-  const games = [
+
+  const useGames = [
     {
       id: 1,
-      title: 'Metal Gear Solid 2',
+      title: 'Metal Gear Solid 1',
       year: '2001',
       console: 'PS2',
       completed: true,
@@ -44,7 +49,7 @@ export default function SideMenu({ darkMode, setDarkMode }: { darkMode: boolean,
     },
     {
       id: 3,
-      title: 'Metal Gear Solid 2',
+      title: 'Metal Gear Solid 3',
       year: '2001',
       console: 'PS2',
       completed: true,
@@ -53,7 +58,7 @@ export default function SideMenu({ darkMode, setDarkMode }: { darkMode: boolean,
     },
     {
       id: 4,
-      title: 'Metal Gear Solid 2',
+      title: 'Metal Gear Solid 4',
       year: '2001',
       console: 'PS2',
       completed: true,
@@ -62,7 +67,7 @@ export default function SideMenu({ darkMode, setDarkMode }: { darkMode: boolean,
     },
     {
       id: 5,
-      title: 'Metal Gear Solid 2',
+      title: 'Metal Gear Solid 5',
       year: '2001',
       console: 'PS2',
       completed: true,
@@ -71,7 +76,7 @@ export default function SideMenu({ darkMode, setDarkMode }: { darkMode: boolean,
     },
     {
       id: 6,
-      title: 'Metal Gear Solid 2',
+      title: 'Metal Gear Solid 6',
       year: '2001',
       console: 'PS2',
       completed: true,
@@ -97,6 +102,9 @@ export default function SideMenu({ darkMode, setDarkMode }: { darkMode: boolean,
       personalNotes: 'I really liked this game. A masterpiece from Kojima productions.',
     },
   ];
+
+  const [open, setOpen] = useState(false);
+  const [games, setGames] = useState<Game[]>(useGames);
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -145,61 +153,46 @@ export default function SideMenu({ darkMode, setDarkMode }: { darkMode: boolean,
           </Typography>
         </Toolbar>
       </AppBar>
-      <Drawer
-        variant="permanent"
-        className={clsx(classes.drawer, {
-          [classes.drawerOpen]: open,
-          [classes.drawerClose]: !open,
-        })}
-        classes={{
-          paper: clsx({
+      <Router>
+
+        <Drawer
+          variant="permanent"
+          className={clsx(classes.drawer, {
             [classes.drawerOpen]: open,
             [classes.drawerClose]: !open,
-          }),
-        }}
-      >
-        <Toolbar />
-
-        <List>
-          <ListItem button classes={{ root: classes.listItem }}>
-            <ListItemIcon><HomeIcon /></ListItemIcon>
-            <ListItemText
-              classes={{
-                primary: classes.listItemText,
-              }}
-              primary="Home"
-            />
-          </ListItem>
-          <ListItem button classes={{ root: classes.listItem }}>
-            <ListItemIcon><AddBox /></ListItemIcon>
-            <ListItemText
-              classes={{
-                primary: classes.listItemText,
-              }}
-              primary="Register Game"
-            />
-          </ListItem>
-          <ListItem button classes={{ root: classes.listItem }}>
-            <ListItemIcon><Settings /></ListItemIcon>
-            <ListItemText
-              classes={{
-                primary: classes.listItemText,
-              }}
-              primary="Settings"
-            />
-          </ListItem>
-        </List>
-      </Drawer>
-      <Box p={4}>
-        <Toolbar />
-        <Grid container spacing={9}>
-          {games.map((item, index) => (
-            <Grid item lg={3} md={4} sm={6} xs={12}>
-              <GameCard game={item} />
-            </Grid>
-          ))}
-        </Grid>
-      </Box>
+          })}
+          classes={{
+            paper: clsx({
+              [classes.drawerOpen]: open,
+              [classes.drawerClose]: !open,
+            }),
+          }}
+        >
+          <Toolbar />
+          <List>
+            <ListItem component={Link} to="/" button classes={{ root: classes.listItem }}>
+              <ListItemIcon><HomeIcon /></ListItemIcon>
+              <ListItemText
+                classes={{
+                  primary: classes.listItemText,
+                }}
+                primary="Home"
+              />
+            </ListItem>
+            <ListItem component={Link} to="/register" button classes={{ root: classes.listItem }}>
+              <ListItemIcon><AddBox /></ListItemIcon>
+              <ListItemText
+                classes={{
+                  primary: classes.listItemText,
+                }}
+                primary="Register Game"
+              />
+            </ListItem>
+          </List>
+        </Drawer>
+        {/* ROUTES INSIDE CONTAINER AT SIDEMENU  */}
+        <Routes />
+      </Router>
     </div>
   );
 }
