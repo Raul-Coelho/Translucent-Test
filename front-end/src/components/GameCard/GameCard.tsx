@@ -8,6 +8,31 @@ import { Game } from '../../interfaces/GameInterface';
 
 export default function GameCard({ game }: { game: Game }) {
   const classes = useStyles();
+  const today = new Date();
+
+  // console.log(today);
+
+  function renderYearsOld(gameYear: Date) {
+    const formatedGameYear = new Date(gameYear);
+    const yearsOld = (Number(today.getFullYear()) - Number(formatedGameYear.getFullYear()));
+
+    if (yearsOld < 9) {
+      return (
+        <Typography variant="h6" component="h2">
+          {yearsOld}
+          {' '}
+          year ago
+        </Typography>
+      );
+    }
+    return (
+      <Typography variant="h6" component="h2">
+        {yearsOld}
+        {' '}
+        years old
+      </Typography>
+    );
+  }
 
   return (
     <Card className={classes.root}>
@@ -16,9 +41,7 @@ export default function GameCard({ game }: { game: Game }) {
         title={game.title}
       />
       <CardContent className={classes.alignStart}>
-        <Typography variant="h6" component="h2">
-          16 years old
-        </Typography>
+        {renderYearsOld(game.year)}
         <Typography variant="h6" component="h2">
           {game.console}
         </Typography>
@@ -30,12 +53,9 @@ export default function GameCard({ game }: { game: Game }) {
           {game.completed ? 'Completed' : 'Not Complete'}
 
         </Typography>
-        <Typography className={classes.italicText} color="textSecondary" variant="body2" component="p">
-          Complete in -
-          {' '}
-          {game.dateOfCompletion}
-        </Typography>
-        <Typography className={classes.italicText} variant="body2" component="p">
+        {game.completed ? `Complete in - ${game.dateOfCompletion}` : 'Not yet finished this game :('}
+
+        <Typography className={classes.italicText} variant="body2">
           {game.personalNotes}
         </Typography>
       </CardContent>

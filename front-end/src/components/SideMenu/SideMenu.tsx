@@ -14,97 +14,16 @@ import MenuIcon from '@material-ui/icons/Menu';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import {
-  Box, Grid, Switch,
-} from '@material-ui/core';
-import Settings from '@material-ui/icons/Settings';
+import { Switch } from '@material-ui/core';
 import AddBox from '@material-ui/icons/AddBox';
 import HomeIcon from '@material-ui/icons/Home';
 import { useStyles } from './Style';
-import GameCard from '../GameCard/GameCard';
-import { Game } from '../../interfaces/GameInterface';
 import Routes from '../../router/Routes';
 
 export default function SideMenu({ darkMode, setDarkMode }: { darkMode: boolean, setDarkMode: React.Dispatch<React.SetStateAction<boolean>> }): JSX.Element {
   const classes = useStyles();
 
-  const useGames = [
-    {
-      id: 1,
-      title: 'Metal Gear Solid 1',
-      year: '2001',
-      console: 'PS2',
-      completed: true,
-      dateOfCompletion: '07/08/2017',
-      personalNotes: 'I really liked this game. A masterpiece from Kojima productions.',
-    },
-    {
-      id: 2,
-      title: 'Metal Gear Solid 2',
-      year: '2001',
-      console: 'PS2',
-      completed: true,
-      dateOfCompletion: '07/08/2017',
-      personalNotes: 'I really liked this game. A masterpiece from Kojima productions.',
-    },
-    {
-      id: 3,
-      title: 'Metal Gear Solid 3',
-      year: '2001',
-      console: 'PS2',
-      completed: true,
-      dateOfCompletion: '07/08/2017',
-      personalNotes: 'I really liked this game. A masterpiece from Kojima productions.',
-    },
-    {
-      id: 4,
-      title: 'Metal Gear Solid 4',
-      year: '2001',
-      console: 'PS2',
-      completed: true,
-      dateOfCompletion: '07/08/2017',
-      personalNotes: 'I really liked this game. A masterpiece from Kojima productions.',
-    },
-    {
-      id: 5,
-      title: 'Metal Gear Solid 5',
-      year: '2001',
-      console: 'PS2',
-      completed: true,
-      dateOfCompletion: '07/08/2017',
-      personalNotes: 'I really liked this game. A masterpiece from Kojima productions.',
-    },
-    {
-      id: 6,
-      title: 'Metal Gear Solid 6',
-      year: '2001',
-      console: 'PS2',
-      completed: true,
-      dateOfCompletion: '07/08/2017',
-      personalNotes: 'I really liked this game. A masterpiece from Kojima productions.',
-    },
-    {
-      id: 7,
-      title: 'Metal Gear Solid 2',
-      year: '2001',
-      console: 'PS2',
-      completed: true,
-      dateOfCompletion: '07/08/2017',
-      personalNotes: 'I really liked this game. A masterpiece from Kojima productions.',
-    },
-    {
-      id: 8,
-      title: 'Metal Gear Solid 2',
-      year: '2001',
-      console: 'PS2',
-      completed: true,
-      dateOfCompletion: '07/08/2017',
-      personalNotes: 'I really liked this game. A masterpiece from Kojima productions.',
-    },
-  ];
-
   const [open, setOpen] = useState(false);
-  const [games, setGames] = useState<Game[]>(useGames);
 
   const handleDrawerOpen = () => {
     setOpen(true);

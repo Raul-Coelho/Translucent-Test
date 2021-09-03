@@ -4,6 +4,8 @@ export const useStyles = makeStyles((theme: Theme) => createStyles({
   root: {
     minWidth: 275,
     maxWidth: 345,
+    height: 275,
+    maxHeight: 300,
   },
   bullet: {
     display: 'inline-block',
