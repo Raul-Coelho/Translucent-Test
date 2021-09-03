@@ -33,6 +33,8 @@ module.exports = {
     '@typescript-eslint/explicit-member-accessibility': 'off',
     '@typescript-eslint/explicit-module-boundary-types': 'off',
     'react/jsx-no-bind': 'off',
+    'import/no-extraneous-dependencies': ['error', { devDependencies: false, optionalDependencies: false, peerDependencies: false }],
+    '@typescript-eslint/no-explicit-any': 'off',
     'max-len': 'off',
     'react/jsx-props-no-spreading': 'off',
     'no-use-before-define': 'off',
