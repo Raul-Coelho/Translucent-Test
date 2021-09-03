@@ -1,18 +1,23 @@
 import {
-  Grid, Container, Typography, Button, TextField, Toolbar, Select, MenuItem, Checkbox, Box,
+  Grid, Container, Typography, Button, TextField, Toolbar, MenuItem, Checkbox, Box, Paper,
 } from '@material-ui/core';
-import {
-  Formik, Form, Field, ErrorMessage, FormikProps, useFormik,
-} from 'formik';
+import { useFormik } from 'formik';
 import * as Yup from 'yup';
-import React, { useState } from 'react';
+import React from 'react';
 import { KeyboardDatePicker, MuiPickersUtilsProvider } from '@material-ui/pickers';
 import DateFnsUtils from '@date-io/date-fns';
+import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import { useStyles } from './Style';
+import { registerGame } from '../../store/gameCatalog/action';
+
+import { Game } from '../../interfaces/GameInterface';
 
 const RegisterGamePage = () => {
   const classes = useStyles();
-  const [checked, setChecked] = useState(false);
+  const dispatch = useDispatch();
+  const history = useHistory();
+  const today = new Date();
 
   const formik = useFormik({
     initialValues: {
@@ -37,8 +42,14 @@ const RegisterGamePage = () => {
       personalNotes: Yup.string().required('Required'),
     }),
 
-    onSubmit: (values) => {
-      alert(JSON.stringify(values));
+    onSubmit: (values: any) => {
+      const game = values;
+      if (!game.completed) {
+        game.dateOfCompletion = null;
+      }
+      dispatch(registerGame(values));
+      formik.resetForm();
+      history.push('/');
     },
   });
 
@@ -48,6 +59,7 @@ const RegisterGamePage = () => {
         <Toolbar />
         <Container maxWidth="md">
           <div className={classes.formWrapper}>
+
             <Typography variant="h6">Register a new game in the catalog</Typography>
             <Typography variant="caption">Fill the form to add a new game</Typography>
 
@@ -74,7 +86,7 @@ const RegisterGamePage = () => {
                   fullWidth
                   format="yyy/MM/dd"
                   minDate="1970-11-01"
-                  maxDate="2022-01-01"
+                  maxDate={today}
                   value={formik.values.year}
                   error={Boolean(
                     formik.errors.year,
