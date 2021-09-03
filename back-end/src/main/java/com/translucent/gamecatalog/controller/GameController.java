@@ -14,7 +14,7 @@ import java.util.List;
 
 @AllArgsConstructor
 @RestController
-@RequestMapping("games")
+@RequestMapping("gamesCatalog")
 @CrossOrigin(origins = "http://localhost:3000")
 public class GameController {
 
@@ -26,9 +26,9 @@ public class GameController {
             @ApiResponse(code = 400, message = "Any value passed is invalid"),
     })
     @PostMapping
-    public ResponseEntity<Void> registerGame(@RequestBody Game game) {
-        this.gameService.registerGame(game);
-        return ResponseEntity.status(HttpStatus.CREATED).build();
+    public ResponseEntity<Game> registerGame(@RequestBody Game game) {
+        Game response = this.gameService.registerGame(game);
+        return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 
     @ApiOperation("Get the list of the games")
@@ -38,7 +38,7 @@ public class GameController {
     })
     @GetMapping
     public ResponseEntity<List<Game>> findAll() {
-        return ResponseEntity.ok(this.gameService.findAllByOrderByDateOfCompletionDesc());
+        return ResponseEntity.ok(this.gameService.findAll());
     }
 
 }

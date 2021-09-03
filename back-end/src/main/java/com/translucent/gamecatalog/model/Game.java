@@ -22,10 +22,9 @@ public class Game {
     @GeneratedValue
     private Integer id;
 
-    @NotNull
     private String title;
     @NotNull
-    private String year;
+    private LocalDate year;
     @NotNull
     private String console;
     @NotNull
