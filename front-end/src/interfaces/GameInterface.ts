@@ -1,9 +1,9 @@
 export interface Game {
     id: number,
     title: string,
-    year: string,
+    year: Date,
     console: string,
     completed: boolean,
-    dateOfCompletion: string,
+    dateOfCompletion?: Date,
     personalNotes: string,
 }
