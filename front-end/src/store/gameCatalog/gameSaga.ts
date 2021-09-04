@@ -13,6 +13,11 @@ function* fetchGames(): any {
     yield put(fetchGamesSuccess(games));
   } catch (error) {
     console.warn('TC - error on fetch games reducer');
+    Swal.fire({
+      icon: 'error',
+      title: 'Oops...',
+      text: 'Error error on fetch games!',
+    });
     yield put(fetchGamesFail(error));
   }
 }
@@ -21,9 +26,19 @@ function* registerGame(action: any): any {
   try {
     const game = action.payload;
     const response = yield GameService.createNewRegister(game);
+    Swal.fire(
+      'Good job!',
+      'You have registered a new game in the catalog!',
+      'success',
+    );
     yield put(registerGameSuccess(response));
   } catch (error) {
-    console.warn('TC - error on register game reducer');
+    console.error('TC - error on register game reducer');
+    Swal.fire({
+      icon: 'error',
+      title: 'Oops...',
+      text: 'Error on register game!',
+    });
     yield put(registerGameFail(error));
   }
 }
@@ -31,5 +46,4 @@ function* registerGame(action: any): any {
 export const rootGameSaga = [
   takeLatest(FETCH_GAMES, fetchGames),
   takeLatest(REGISTER_GAME, registerGame),
-
 ];
