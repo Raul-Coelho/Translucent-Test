@@ -1,4 +1,3 @@
-import React from 'react';
 import { URL, axiosApi } from '../../env/desv.env';
 import { Game } from '../../interfaces/GameInterface';
 
@@ -8,7 +7,7 @@ export default {
       const { data } = await axiosApi.get(`${URL}/gamesCatalog`);
       return data;
     } catch (error) {
-      console.warn('TC - error on the fetch games catalog', error);
+      console.error('TC - error on the fetch games catalog', error);
       throw (error);
     }
   },

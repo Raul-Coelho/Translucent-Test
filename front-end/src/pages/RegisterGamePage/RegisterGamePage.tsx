@@ -1,5 +1,5 @@
 import {
-  Grid, Container, Typography, Button, TextField, Toolbar, MenuItem, Checkbox, Box, Paper,
+  Grid, Container, Typography, Button, TextField, Toolbar, MenuItem, Checkbox,
 } from '@material-ui/core';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
@@ -7,16 +7,12 @@ import React from 'react';
 import { KeyboardDatePicker, MuiPickersUtilsProvider } from '@material-ui/pickers';
 import DateFnsUtils from '@date-io/date-fns';
 import { useDispatch } from 'react-redux';
-import { useHistory } from 'react-router-dom';
 import { useStyles } from './Style';
 import { registerGame } from '../../store/gameCatalog/action';
-
-import { Game } from '../../interfaces/GameInterface';
 
 const RegisterGamePage = () => {
   const classes = useStyles();
   const dispatch = useDispatch();
-  const history = useHistory();
   const today = new Date();
 
   const formik = useFormik({
@@ -49,7 +45,6 @@ const RegisterGamePage = () => {
       }
       dispatch(registerGame(values));
       formik.resetForm();
-      history.push('/');
     },
   });
 
