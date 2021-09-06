@@ -81,4 +81,9 @@ The application's responsiveness was based on the SideMenu component, it was nec
 
 The application has been dockerized to facilitate the process of managing development environments. Using docker compose to control docker containers (front-end, back-end and Database).
 
-<iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="800" height="450" src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Ffile%2FHmFPaCaxYMJB9RUqB8pCMx%2FFigma-Material-Design-UI-Game-Catalog-TC%3Fnode-id%3D0%253A1" allowfullscreen></iframe>
+## Material-Design-UI - Game-Catalog-TC
+
+### See the prototypes in this [Figma](https://www.figma.com/file/HmFPaCaxYMJB9RUqB8pCMx/Figma-Material-Design-UI-Game-Catalog-TC?node-id=0%3A1) link.
+
+
+
