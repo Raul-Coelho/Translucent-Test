@@ -85,5 +85,14 @@ The application has been dockerized to facilitate the process of managing develo
 
 ### See the prototypes in this [Figma](https://www.figma.com/file/HmFPaCaxYMJB9RUqB8pCMx/Figma-Material-Design-UI-Game-Catalog-TC?node-id=0%3A1) link.
 
+![alt text](https://github.com/Raul-Coelho/Translucent-Test/blob/main/GCFormDark.jpeg?raw=true)
+
+![alt text](https://github.com/Raul-Coelho/Translucent-Test/blob/main/GCFormLight.jpeg?raw=true)
+
+![alt text](https://github.com/Raul-Coelho/Translucent-Test/blob/main/GCListDark.jpeg?raw=true)
+
+![alt text](https://github.com/Raul-Coelho/Translucent-Test/blob/main/GCListLight.jpeg?raw=true)
+
+
 
 
