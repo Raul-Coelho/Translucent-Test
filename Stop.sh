@@ -1,0 +1,3 @@
+cd back-end
+
+sudo docker-compose down
