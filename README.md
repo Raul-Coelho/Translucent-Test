@@ -6,9 +6,9 @@ Web application developed in order to manage your game catalog.
 
 For development, ReactJs with Typescript was used on the front-end with Material UI to build the UI, following the Material Design specifications for Theme and Responsiveness. React-Redux and Redux-Saga were used for data and request management.
 
-To make the backend, Java was used with Spring Boot to create a REST API. we used a Docker container for our database and to deploy the application as well. The application has been Dockerized and documented with Swagger. You can access by following the next steps.
+To make the backend, Java was used with Spring Boot to create a REST API. was used a Docker container for our database and to deploy the application as well. The application has been Dockerized and documented with Swagger.
 
-# How To Excecute - Application
+# How To Excecute Application
 
 ## Before Excecute
 
@@ -77,7 +77,7 @@ mvn test
 ```
 ## Considerations
 
-The application's responsiveness was based on the SideMenu component, it was necessary to modify this component so that it behaved as it was properly thought of in the prototyping process. The SideMenu if component was modified by me so that its behavior is relatively similar to the behavior of youtube. The application is not relying on test front-end with Jest, this part has not been finished.
+The responsivity of application was based on the SideMenu component, it was necessary to modify this component so that it behaved as it was properly thought of in the prototyping process. The SideMenu if component was modified by me so that its behavior is relatively similar to the behavior of youtube. The application is not relying on test front-end with Jest, this part has not been finished.
 
 The application has been dockerized to facilitate the process of managing development environments. Using docker compose to control docker containers (front-end, back-end and Database).
 
