@@ -1,9 +1,9 @@
 version: '2'
 
 services:
-  app:
-    image: 'docker-spring-boot-postgres:latest'
-    container_name: app
+  game-catalog-api:
+    image: back-end
+    container_name: game-catalog-api
     ports:
       - "8080:8080"
     depends_on:
@@ -22,3 +22,10 @@ services:
     environment:
       - POSTGRES_USER=compose-postgres
       - POSTGRES_PASSWORD=compose-postgres
+
+  games-catalog-client:
+    build: ../front-end/
+    ports:
+      - "3000:3000"
+    depends_on:
+      - game-catalog-api
