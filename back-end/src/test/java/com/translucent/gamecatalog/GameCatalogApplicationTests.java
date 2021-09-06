@@ -1,10 +1,5 @@
 package com.translucent.gamecatalog;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.SerializationFeature;
-import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
-import com.translucent.gamecatalog.controller.HomeController;
-import com.translucent.gamecatalog.exceptions.GameNotCompleteException;
 import com.translucent.gamecatalog.exceptions.InvalidDateException;
 import com.translucent.gamecatalog.model.Game;
 import com.translucent.gamecatalog.repository.GameRepository;
@@ -14,27 +9,16 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.web.servlet.MockMvc;
-
-import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.mockito.AdditionalAnswers.returnsFirstArg;
 import static org.mockito.Mockito.*;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.hamcrest.Matchers.is;
 import static org.mockito.ArgumentMatchers.any;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-import org.springframework.http.MediaType;
+
 
 import java.time.LocalDate;
+import java.util.Arrays;
 
-@SpringBootTest
-@AutoConfigureMockMvc
 class GameCatalogApplicationTests {
 
 	private static final String API_URL = "/gamesCatalog";
@@ -50,21 +34,13 @@ class GameCatalogApplicationTests {
 		this.gameService = new GameService(gameRepository, gameValidator);
 	}
 
-	@Autowired
-	protected MockMvc mockMvc;
-
-	@Autowired
-	private HomeController controller;
-
-	@Test
-	public void contextLoads() throws Exception {
-		assertThat(controller).isNotNull();
-	}
-
 	@Test
 	@DisplayName("Fetch games")
 	public void fetchGames() throws Exception {
-		mockMvc.perform(get(API_URL).contentType("application/json")).andExpect(status().isOk());
+		when(gameRepository.findAllByOrderByDateOfCompletionDesc()).thenReturn(Arrays.asList(
+				new Game(null,"Metal Gear Solid 2", LocalDate.of(2001, 8 ,7), "PS2", true, LocalDate.of(2017, 8 ,7), " I really liked this game. A masterpiece from Kojima productions."),
+				new Game(null,"Metal Gear Solid 3", LocalDate.of(2001, 8 ,7), "PS2", true, LocalDate.of(2017, 8 ,7), " I really liked this game. A masterpiece from Kojima productions.")
+		));
 	}
 
 	@Test
