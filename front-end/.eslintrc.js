@@ -35,6 +35,7 @@ module.exports = {
     'react/jsx-no-bind': 'off',
     'import/no-extraneous-dependencies': ['error', { devDependencies: false, optionalDependencies: false, peerDependencies: false }],
     '@typescript-eslint/no-explicit-any': 'off',
+    '@typescript-eslint/no-unused-vars': 'off',
     'no-console': 'off',
     'func-names': 'off',
     'max-len': 'off',
